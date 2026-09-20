@@ -1,0 +1,77 @@
+CP5 benchmark — Sang
+strategy=FixedSizeChunker(chunk_size=600, overlap=100)
+embedding_backend=FastEmbed/BAAI/bge-small-en-v1.5
+corpus_files=9; stored_chunks=51
+top_k=3
+
+=== Q1 buyer ===
+query=What conditions must be met before a buyer can open a case on Etsy?
+metadata_filter={'audience': 'buyer'}
+gold_doc_ids=buyer-open-case, buyer-estimated-delivery; gold_marker=48 hours
+top_1: score=0.833737; id=buyer-open-case#0; doc_id=buyer-open-case; audience=buyer; preview=# How to Open a Case ## Quick answer If the order's maximum estimated delivery date has passed and you contacted the seller more than 48 hours ago, you can select Open a case. You 
+top_2: score=0.801156; id=buyer-help-order#3; doc_id=buyer-help-order; audience=buyer; preview=. With Etsy’s Purchase Protection program for qualifying orders, you’ll receive a full refund if the item doesn’t arrive, arrives damaged, or isn’t as described. ## I checked out a
+top_3: score=0.791119; id=buyer-purchase-protection#3; doc_id=buyer-purchase-protection; audience=buyer; preview=ew or existing Etsy account to be eligible for the Purchase Protection program. ## What happens to the seller if I request a refund? An occasional case opened against a seller will
+gold_doc_in_top3=True; all_gold_docs_in_top3=False; answer_span_in_top3=True
+extractive_grounded_answer=[1] If the order's maximum estimated delivery date has passed and you contacted the seller more than 48 hours ago, you can select Open a case. [1] You can open a case after you’ve contacted the seller and your order becomes eligible. [2] If you checked out as a guest, link your order to an Etsy account in order to open a case with Etsy. [3] An occasional case opened against a seller will not negatively impact the seller or shop. [1] Sign in to Etsy.com and go to Your account.
+
+=== Q2 seller ===
+query=How does a seller work with a buyer to resolve an open Etsy case through Shop Manager?
+metadata_filter={'audience': 'seller'}
+gold_doc_ids=seller-resolve-case; gold_marker=Shop Manager
+top_1: score=0.885760; id=seller-resolve-case#4; doc_id=seller-resolve-case; audience=seller; preview=rk with my buyer to resolve the case? If the case is open, work with the buyer through Cases in Shop Manager. 1. Sign in to Etsy.com and go to Shop Manager. 2. Go to Help and then 
+top_2: score=0.826987; id=seller-resolve-case#3; doc_id=seller-resolve-case; audience=seller; preview=not need to issue the refund themselves. If Etsy requests more information about an open case, the seller must respond. Once the case is closed, the seller and buyer receive an ema
+top_3: score=0.823216; id=seller-resolve-case#7; doc_id=seller-resolve-case; audience=seller; preview=information about an open case, the seller must respond. If the buyer paid through personal PayPal instead of Etsy Payments, Etsy may require proof of a PayPal refund before closin
+gold_doc_in_top3=True; all_gold_docs_in_top3=True; answer_span_in_top3=True
+extractive_grounded_answer=[1] If the case is open, work with the buyer through Cases in Shop Manager. [2] If the case is open, work with the buyer through Cases in Sho [1] rk with my buyer to resolve the case? [1] If the buyer and seller cannot resolve the problem th [2] Once the case is closed, the seller and buyer receive an email with the resolution.
+
+=== Q3 buyer ===
+query=How much refund does Etsy Purchase Protection provide for a qualifying order?
+metadata_filter={'audience': 'buyer'}
+gold_doc_ids=buyer-purchase-protection; gold_marker=full refund
+top_1: score=0.896129; id=buyer-purchase-protection#0; doc_id=buyer-purchase-protection; audience=buyer; preview=# Etsy Purchase Protection Program ## Qualifying order issues Etsy’s Purchase Protection program provides a full refund for qualifying orders when an item: - Doesn’t arrive. - Arri
+top_2: score=0.827203; id=buyer-help-order#3; doc_id=buyer-help-order; audience=buyer; preview=. With Etsy’s Purchase Protection program for qualifying orders, you’ll receive a full refund if the item doesn’t arrive, arrives damaged, or isn’t as described. ## I checked out a
+top_3: score=0.804023; id=buyer-purchase-protection#2; doc_id=buyer-purchase-protection; audience=buyer; preview=aged the seller, you may be able to ask Etsy to step in and help you get a refund. Eligibility depends on the case requirements. Once refund eligibility is confirmed, Etsy sends a 
+gold_doc_in_top3=True; all_gold_docs_in_top3=True; answer_span_in_top3=True
+extractive_grounded_answer=[1] Etsy’s Purchase Protection program provides a full refund for qualifying orders when an item: - Doesn’t arrive. [2] With Etsy’s Purchase Protection program for qualifying orders, you’ll receive a full refund if the item doesn’t arrive, arrives damaged, or isn’t as described. [1] If an order does not meet the criteria for Etsy Purchase Protection, check the seller’s policies for cancellations, returns, or exchanges. [3] If you purchased as a guest, connect the order to a new or existing Etsy account to be eligible for the Purchase Protection program. [1] Arrives 7+ days after the maximum estimated delivery date window provided at checkout.
+
+=== Q3 unfiltered ===
+query=How much refund does Etsy Purchase Protection provide for a qualifying order?
+metadata_filter=none
+gold_doc_ids=buyer-purchase-protection, seller-purchase-protection; gold_marker=full refund
+top_1: score=0.896129; id=buyer-purchase-protection#0; doc_id=buyer-purchase-protection; audience=buyer; preview=# Etsy Purchase Protection Program ## Qualifying order issues Etsy’s Purchase Protection program provides a full refund for qualifying orders when an item: - Doesn’t arrive. - Arri
+top_2: score=0.882478; id=seller-purchase-protection#0; doc_id=seller-purchase-protection; audience=seller; preview=# Purchase Protection for Sellers If an order is eligible for Etsy Purchase Protection, Etsy covers up to $250 of a refund, or the converted equivalent in the seller’s local curren
+top_3: score=0.838427; id=seller-purchase-protection#2; doc_id=seller-purchase-protection; audience=seller; preview=laim to that primary source. - The shop is not in good standing for violating Etsy policies. Sellers are responsible for refunding costs for orders outside the eligibility requirem
+gold_doc_in_top3=True; all_gold_docs_in_top3=True; answer_span_in_top3=True
+extractive_grounded_answer=[1] Etsy’s Purchase Protection program provides a full refund for qualifying orders when an item: - Doesn’t arrive. [2] If an order is eligible for Etsy Purchase Protection, Etsy covers up to $250 of a refund, or the converted equivalent in the seller’s local currency. [1] If an order does not meet the criteria for Etsy Purchase Protection, check the seller’s policies for cancellations, returns, or exchanges. [3] Etsy Purchase Protection automatically covers qualifying orders with no setup require [1] Arrives 7+ days after the maximum estimated delivery date window provided at checkout.
+
+=== Q3 seller ===
+query=How much refund does Etsy Purchase Protection provide for a qualifying order?
+metadata_filter={'audience': 'seller'}
+gold_doc_ids=seller-purchase-protection; gold_marker=$250
+top_1: score=0.882478; id=seller-purchase-protection#0; doc_id=seller-purchase-protection; audience=seller; preview=# Purchase Protection for Sellers If an order is eligible for Etsy Purchase Protection, Etsy covers up to $250 of a refund, or the converted equivalent in the seller’s local curren
+top_2: score=0.838427; id=seller-purchase-protection#2; doc_id=seller-purchase-protection; audience=seller; preview=laim to that primary source. - The shop is not in good standing for violating Etsy policies. Sellers are responsible for refunding costs for orders outside the eligibility requirem
+top_3: score=0.833759; id=seller-returns-refunds#1; doc_id=seller-returns-refunds; audience=seller; preview=a buyer through Messages or Etsy’s case system, Etsy requires the seller to fulfill that agreement. This may include: - Issuing a refund for returned items. - Providing Etsy with p
+gold_doc_in_top3=True; all_gold_docs_in_top3=True; answer_span_in_top3=True
+extractive_grounded_answer=[1] If an order is eligible for Etsy Purchase Protection, Etsy covers up to $250 of a refund, or the converted equivalent in the seller’s local currency. [3] If an order is eligible for Etsy Purchase Protection, Etsy will cover up to $250, or the converted equivalent in the seller’s local currency, of a refund. [2] Etsy Purchase Protection automatically covers qualifying orders with no setup require [1] The item arrived 7+ days after its estimated delivery date window provided at checkout. [1] Etsy Purchase Protection may apply when: - A buyer never received the package, for example if it was lost in transit.
+
+=== Q4 buyer ===
+query=Which components are used to calculate an Etsy estimated delivery date?
+metadata_filter={'audience': 'buyer'}
+gold_doc_ids=buyer-estimated-delivery; gold_marker=carrier transit time
+top_1: score=0.837842; id=buyer-estimated-delivery#3; doc_id=buyer-estimated-delivery; audience=buyer; preview=stal carrier’s latest transit times. ## How do I see my order’s estimated delivery date? On Etsy.com: 1. Sign in and select the Your Account icon. 2. Select Purchases. 3. If availa
+top_2: score=0.811244; id=buyer-estimated-delivery#2; doc_id=buyer-estimated-delivery; audience=buyer; preview=elivery case can be opened only 7+ days after the maximum estimated delivery date provided at checkout has passed. ## How do I see the estimated delivery date before purchasing? On
+top_3: score=0.753385; id=buyer-estimated-delivery#1; doc_id=buyer-estimated-delivery; audience=buyer; preview=ge. ## How is the estimated delivery date calculated? The estimated delivery date is based on the processing time for the items and the transit time for the shipping carrier. Proce
+gold_doc_in_top3=True; all_gold_docs_in_top3=True; answer_span_in_top3=True
+extractive_grounded_answer=[2] elivery case can be opened only 7+ days after the maximum estimated delivery date provided at checkout has passed. [3] The estimated delivery date is based on the processing time for the items and the transit time for the shipping carrier. [3] Processing time + carrier transit time = estimated delivery date. [3] A non-delivery case can be opened only 7+ days after the maximum estimated delivery date provided at checko [1] If available, the estimated delivery date appears with the order.
+
+=== Q5 seller ===
+query=How can a seller issue a full or partial refund, and what is the Etsy Payments time limit?
+metadata_filter={'audience': 'seller'}
+gold_doc_ids=seller-issue-refund; gold_marker=180 days
+top_1: score=0.882164; id=seller-issue-refund#0; doc_id=seller-issue-refund; audience=seller; preview=# How to Issue a Full or Partial Refund For an Order You can issue a full or partial refund for an order in your Shop Manager. ## To refund an order 1. On Etsy.com, open Shop Manag
+top_2: score=0.860353; id=seller-issue-refund#4; doc_id=seller-issue-refund; audience=seller; preview=ter the payment is processed. After 180 days, you cannot refund an order through Etsy Payments. If the shop policy allows refunds after 180 days, refund the buyer through a payment
+top_3: score=0.839000; id=seller-issue-refund#1; doc_id=seller-issue-refund; audience=seller; preview=t to refund next to the item. 7. Select Review refund. 8. Select Submit. Canceling is separate from refunding. Cancel the order if needed. ## What can I issue a refund for? You can
+gold_doc_in_top3=True; all_gold_docs_in_top3=True; answer_span_in_top3=True
+extractive_grounded_answer=[1] You can issue a full or partial refund for an order in your Shop Manager. [2] After 180 days, you cannot refund an order through Etsy Payments. [1] To refund the entire transaction, select the box by Issue a full refund. [2] If the shop policy allows refunds after 180 days, refund the buyer through a payment method outside Etsy, such as PayPal. [2] This may happen if 180 days have passed since the purchase date or if the buyer has filed a chargeback.
+
+canonical_primary_queries=5

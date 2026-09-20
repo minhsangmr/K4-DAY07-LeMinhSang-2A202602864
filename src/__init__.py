@@ -9,9 +9,11 @@ from .chunking import (
 from .embeddings import (
     EMBEDDING_PROVIDER_ENV,
     GEMINI_EMBEDDING_MODEL,
+    JINA_EMBEDDING_MODEL,
     LOCAL_EMBEDDING_MODEL,
     OPENAI_EMBEDDING_MODEL,
     GeminiEmbedder,
+    JinaEmbedder,
     LocalEmbedder,
     MockEmbedder,
     OpenAIEmbedder,
@@ -33,9 +35,11 @@ __all__ = [
     "LocalEmbedder",
     "OpenAIEmbedder",
     "GeminiEmbedder",
+    "JinaEmbedder",
     "_mock_embed",
     "LOCAL_EMBEDDING_MODEL",
     "OPENAI_EMBEDDING_MODEL",
     "GEMINI_EMBEDDING_MODEL",
+    "JINA_EMBEDDING_MODEL",
     "EMBEDDING_PROVIDER_ENV",
 ]
